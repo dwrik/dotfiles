@@ -1,0 +1,1 @@
+tail -n +35 emoji.txt | head -n -16 | sed 's/.*;//g' |  grep "fully-qualified" | awk '{printf "%s ", $3; for(i=5;i<=NF;i++) {printf "%s ", $i;} printf "\n";}'
