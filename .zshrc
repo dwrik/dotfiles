@@ -3,21 +3,22 @@ HISTFILE=~/.cache/zsh/histfile
 HISTSIZE=5000
 SAVEHIST=5000
 
-unsetopt beep    # Disable beep sound
-setopt autocd    # Automatically cd into typed directory
-stty stop undef  # Disable ctrl-s to freeze terminal
+setopt autocd              # cd into typed directory
+setopt COMPLETE_ALIASES    # Tab completion for aliases
 
-# vi mode
+unsetopt beep              # Disable beep sound
+stty stop undef            # Disable ctrl-s to freeze terminal
+
+# Vi mode
 bindkey -v
 
-# Auto Completion using Tab
-autoload -Uz compinit
-zstyle ':completion::complete:*' menu select gain-privileges 1    # auto completion for sudo commands
+autoload -Uz compinit                                             # Initialize completion system
+zstyle ':completion::complete:*' menu select gain-privileges 1    # Enable for sudo commands
 zmodload zsh/complist
-compinit -d ~/.cache/zsh/zcompdump
-_comp_options+=(globdots)    																			# Include hidden files
+compinit -d ~/.cache/zsh/zcompdump                                # Change completion file location
+_comp_options+=(globdots)                                         # Include hidden files in completion
 
-# Use vim keys in tab completion
+# Use vim keys in completion menu
 bindkey -M menuselect 'h' vi-backward-char
 bindkey -M menuselect 'k' vi-up-line-or-history
 bindkey -M menuselect 'l' vi-forward-char
@@ -42,9 +43,6 @@ alias weather="curl https://wttr.in/"
 
 PROMPT='%B%F{cyan}[%f%F{green}%n%f@%F{magenta}%M%f %F{blue}%1~%f%F{cyan}]%f%#%b '    # Left prompt
 RPROMPT='[%F{yellow}%?%f]'                                                           # Right prompt
-
-# Tab completion for aliases
-setopt COMPLETE_ALIASES
 
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh    # load syntax highlighting
 source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh            # load fish-like auto suggestions
