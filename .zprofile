@@ -30,3 +30,4 @@ export LESS_TERMCAP_us="$(printf '%b' '[1;32m')"
 export LESS_TERMCAP_ue="$(printf '%b' '[0m')"
 export RANGER_LOAD_DEFAULT_RC=FALSE
 export LIBVA_DRIVER_NAME=iHD
+export GDK_DPI_SCALE=1.25
