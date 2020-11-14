@@ -11,7 +11,6 @@ zsh-completions
 zsh-syntax-highlighting
 arch-wiki-lite
 xdg-user-dirs
-alsa-utils
 libva-utils
 vulkan-intel
 intel-media-driver
@@ -63,6 +62,8 @@ pacman-contrib
 maim
 xclip
 xsel
+alsa-utils
+aria2
 ----
 AUR
 ----
