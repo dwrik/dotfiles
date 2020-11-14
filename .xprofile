@@ -2,7 +2,7 @@
 
 # This file runs when user logins with DM or startx/xinit
 
-wal -R    						# Restore wal config
-dunst &   						# notification daemon
-picom &   						# compositor for transparency and remove tearing
+wal -R                # Restore wal config
+dunst &               # notification daemon
+picom &               # compositor for transparency and remove tearing
 xset r rate 300 50    # increase key repeating rate
