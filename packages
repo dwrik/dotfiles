@@ -46,7 +46,6 @@ cups-pdf
 zathura
 zathura-pdf-mupdf
 telegram-desktop
-ranger
 ttf-linux-libertine
 noto-fonts-emoji
 lshw
@@ -67,6 +66,9 @@ aria2
 sxiv
 arandr
 peek
+ranger
+w3m
+thunar
 ----
 AUR
 ----
