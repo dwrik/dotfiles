@@ -62,10 +62,11 @@ set showtabline=2
 "Highlight comments
 highlight Comment cterm=italic
 
-"True colours
+"256-color
 set background=dark
 set t_Co=256
 
+"True colours
 "if (has("termguicolors"))
 " set termguicolors
 "endif
@@ -74,7 +75,7 @@ if (has("nvim"))
   let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 endif
 
-"colorscheme
+"Colorscheme
 colorscheme default
 
 "Turn off colors for variable names in javaa
@@ -123,6 +124,11 @@ set scrolloff=4                          "scroll offset when pressed z + <Enter>
 set ignorecase                           "searches while ignoring case of pattern
 set wildmenu                             "auto completion of commands with TAB
 
+"After a re-source, fix syntax matching issues (concealing brackets):
+if exists('g:loaded_webdevicons')
+  call webdevicons#refresh()
+endif
+
 "Automatically deletes all trailing whitespace and newlines at end of file on save.
 autocmd BufWritePre * %s/\s\+$//e
 autocmd BufWritepre * %s/\n\+\%$//e
@@ -140,8 +146,8 @@ nnoremap <space> za
 nnoremap // :noh<return>
 
 "Switching buffers with alt+,/alt+.
-nnoremap <M-.> :bnext<return>
-nnoremap <M-,> :bNext<return>
+nnoremap <M-.> :bnext!<return>
+nnoremap <M-,> :bprevious!<return>
 
 "Deleting buffers with Alt+Shift+q
 nnoremap <M-S-Q> :bdelete %<return>
