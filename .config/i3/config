@@ -178,7 +178,7 @@ bar {
 for_window [class=".*"] border pixel 2
 
 # emoji picker
-bindsym $mod+period exec alacritty --class "emojipicker" -e emojipicker.sh
+bindsym $mod+period exec alacritty --class "emojipicker" --dimensions 100 25 --command emojipicker.sh
 for_window [instance="emojipicker"] floating enable
 
 # setting inner and outer gaps
