@@ -32,3 +32,9 @@ export LESSHISTFILE="$XDG_CACHE_HOME/less/lesshst"
 export RANGER_LOAD_DEFAULT_RC=FALSE
 export LIBVA_DRIVER_NAME=iHD
 export GDK_DPI_SCALE=1.25
+
+# Automatically startx if logged-in in tty1
+if [ "$(tty)" = "/dev/tty1" ]
+then
+				exec startx
+fi
