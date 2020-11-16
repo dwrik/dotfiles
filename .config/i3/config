@@ -182,7 +182,7 @@ bindsym $mod+period exec alacritty --class "emojipicker" --dimensions 100 25 --c
 for_window [instance="emojipicker"] floating enable
 
 # setting inner and outer gaps
-gaps inner 8
+gaps inner 16
 gaps outer 4
 
 # focus follows mouse
@@ -197,21 +197,24 @@ bindsym $mod+Shift+minus move scratchpad
 # show scratchpad
 bindsym $mod+minus scratchpad show
 
-#set colors from Xresources
-set_from_resource $bg i3wm.color10
-set_from_resource $fg i3wm.color14
-
 #set colors from Xresources for dmenu
 set_from_resource $bgd i3wm.color11
 set_from_resource $fgd i3wm.color15
 
-#class	border	backgr	text	indicator	child_border
-client.focused	$bg	$bg	$fg	$bg	$bg
-client.focused_inactive	$bg	$bg	$fg	$bg	$bg
-client.unfocused	$bg	$bg	$fg	$bg	$bg
-client.urgent	$bg	$bg	$fg	$bg	$bg
-client.placeholder	$bg	$bg	$fg	$bg	$bg
-client.background	$bg
+#set colors from Xresources
+set_from_resource $fg i3wm.color7 #f0f0f0
+set_from_resource $bg i3wm.color2 #f0f0f0
+set_from_resource $ubr i3wm.color0 #000000
+set_from_resource $fbr i3wm.color6 #000000
+
+# class                 border  backgr. text indicator child_border
+client.focused          $br     $bg     $fg  $fbr       $fbr
+client.focused_inactive $br     $bg     $fg  $ubr       $ubr
+client.unfocused        $br     $bg     $fg  $ubr       $ubr
+client.urgent           $br     $bg     $fg  $ubr       $ubr
+client.placeholder      $br     $bg     $fg  $ubr       $ubr
+
+client.background       $bg
 
 # start dmenu (a program launcher)
 bindsym $mod+d exec dmenu_run -p "search:" -fn "SourceCodePro Semibold-15" -nb "$fgd" -nf "$bgd" -sb "$bgd" -sf "$fgd"
