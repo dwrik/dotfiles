@@ -70,6 +70,11 @@ peek
 ranger
 w3m
 thunar
+pulseaudio-alsa
+pulsemixer
+figlet
+lib32-mesa
+steam
 ----
 AUR
 ----
