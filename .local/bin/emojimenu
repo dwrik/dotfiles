@@ -1,0 +1,21 @@
+#!/usr/bin/bash
+
+# source colors from pywal cache
+. "$XDG_CACHE_HOME/wal/colors.sh"
+
+# set bg and fg colors
+nb=$color8
+nf=$color0
+sb=$color0
+sf=$color14
+
+# get choice
+chosen=$(dmenu -F -i -l 10 -p "emojimenu:" -fn "monospace-11" -nb $nb -nf $nf -sb $sb -sf $sf < $XDG_DATA_HOME/emoji)
+
+# exit if none chosen
+[ -z "$chosen" ] && exit
+
+# get emoji, remove newline
+# copy to clipboard and notify
+printf $chosen | cut -d " " -f 1 | tr -d \\n | xclip -selection clipboard
+dunstify --appname="emojimenu" --timeout=3000 --icon="" "'$(xclip -selection clipboard -o)' copied to clipboard" 2>&1 > /dev/null

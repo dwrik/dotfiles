@@ -1,0 +1,6 @@
+#!/usr/bin/bash
+
+# TODO: give dmenu prompt to select removable device to be unmounted
+
+# unmounts all removable devices
+devmon -r

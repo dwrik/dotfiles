@@ -1,0 +1,71 @@
+#!/usr/bin/bash
+
+# basic script to rename (remove spaces, hyphens, uppercase etc.)
+# and fix permissions for files to make them more unix friendly
+
+# fix permissions
+fixperms() {
+    if [ -d $1 ]; then
+        chmod 755 $1
+    elif [ -f $1 ]; then
+        chmod 644 $1
+    fi
+}
+
+# move/rename from $1 to $2
+move() {
+    if [ -d "$1" ]; then
+        mv --verbose --strip-trailing-slashes "$1" $2
+    elif [ -f "$1" ]; then
+        mv --verbose --no-target-directory "$1" $2
+    fi
+}
+
+# replace spaces, dots, hyphens with underscores, remove parens, convert upper to lower
+fixfilename() {
+    fixed=$(echo "$1" | sed "s/\. /_/g;s/ - /_/g;s/-/_/g;s/ /_/g;s/'//g;s/[()]//g"| tr '[:upper:]' '[:lower:]')
+    echo "$fixed"
+}
+
+# loops over a list of files/dirs & fixes them
+mainloop() {
+    while read filename
+    do
+        # fix filename
+        modified=$(fixfilename "$filename")
+
+        # rename if modified name is different from original
+        [ ! "$filename" == "$modified" ] && move "$filename" "$modified"
+
+        # change permissions
+        fixperms "$modified"
+
+    done < $1
+}
+
+# help msg if no arg
+if [ -z "$1" ]
+then
+    echo -e "\nUsage:\n\tfixfiles <file>|<directory>"
+    echo -e "\nFix file names and permissions to make them more unix friendly."
+    exit 1
+fi
+
+# temp file to store paths
+tmpfile=/tmp/fixfiles
+
+# dir/file to fix
+startingpoint="$1"
+
+if [ -d "$startingpoint" ]; then
+    # fix directories
+    find "$startingpoint" -type d > $tmpfile && mainloop $tmpfile
+    # fix arg dir to avoid not found error while fixing files
+    startingpoint=$(fixfilename "$startingpoint")
+fi
+
+# fix files
+find "$startingpoint" -type f > $tmpfile && mainloop $tmpfile
+
+# clean up
+rm $tmpfile

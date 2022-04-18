@@ -1,0 +1,10 @@
+#!/usr/bin/bash
+
+# get volume
+volume=$(pamixer --get-volume-human)
+
+# print mute message and quit if muted
+[ $volume == "muted" ] && echo " Mute" && exit
+
+# print volume
+echo " $volume"

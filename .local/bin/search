@@ -1,0 +1,43 @@
+#!/usr/bin/zsh
+
+# source colors from pywal cache
+. "$XDG_CACHE_HOME/wal/colors.sh"
+
+# colors for fzf
+bgn=$color0
+fgn=$color7
+bgp=$color2
+fgp=$color0
+qry=$color5
+hlp=$color15
+
+# these directories, their subdirectories and files will be ignored
+ignore=("go" "yay" ".git" "plugged" ".cache" "google-chrome" "bravesoftware" "node_modules" \
+        ".npm" ".vscode-oss" "wallpapers" "screenshots" "uem" "projects")
+
+# starting directory
+start=$HOME
+
+# building find command
+command="find $start "
+# add ignored directories
+for directory in "${ignore[@]}"
+do
+    command+="-iname $directory -prune -o "
+done
+# workaround for ignoring vscode's stupidly named config directory
+command+="-iname \"Code\ -\ OSS\" -prune -o "
+# print found items
+command+="-print"
+
+# building fzf command to store the output in temp file
+command="$command | fzf --color='bg:$bgn,fg:$fgn,bg+:$bgp,fg+:$fgp,hl+:$hlp,query:$qry' --border=sharp > /tmp/search.log"
+
+# spawn floating st instance and execute the command
+st -c "FloatingSt" -e zsh -c "eval $command" 2> /dev/null
+
+# exit if nothing selected
+[[ $? == 1 ]] && exit
+
+# open selection in user's preferred application
+xdg-open $(< /tmp/search.log)

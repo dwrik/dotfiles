@@ -1,0 +1,32 @@
+#!/bin/bash
+
+# source colors from pywal cache
+. "$XDG_CACHE_HOME/wal/colors.sh"
+
+# set bg and fg colors
+# for normal and selection
+nb=$color8
+nf=$color0
+sb=$color0
+sf=$color14
+
+# screenshot options
+options=(" copy to clipboard" " save to file")
+
+# constructing input string for piping into dmenu
+for option in "${options[@]}"; do
+    input+="$option\n"
+done
+
+# get user's choice
+choice=$(echo -en $input | dmenu -i -l "${#options[@]}" -p "screenshot:" -fn "monospace-11" -nb $nb -nf $nf -sb $sb -sf $sf)
+
+# strip leading glyph
+chosen=$(printf "$choice" | cut --complement -d " " -f 1)
+
+# cmd to execute
+case $chosen in
+    "copy to clipboard") maim -s | xclip -selection clipboard -t image/png ;;
+    "save to file")      maim -s > ~/pictures/screenshots/$(date +%s).png  ;;
+    *)                   exit 1                                            ;;
+esac

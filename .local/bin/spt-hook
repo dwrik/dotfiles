@@ -1,0 +1,29 @@
+#!/usr/bin/bash
+
+# temp path for album art
+artpath=/tmp/spt-hook-img
+iconpath=/usr/share/icons/Adwaita/48x48/mimetypes/audio-x-generic.png
+
+# get metadata
+data=$(spt playback --format "%t|%a" 2>/dev/null)
+
+# exit if no data
+[[ -z "$data" ]] && exit
+
+# extract data (title, artist)
+title=$(printf "$data"  | cut -d "|" -f1)
+artist=$(printf "$data" | cut -d "|" -f2)
+
+# album art
+art=$(playerctl metadata --player spotifyd --format '{{mpris:artUrl}}')
+
+# set icon (icon/album-art)
+if [[ $? == 1 ]]; then
+    icon=$iconpath
+else
+    curl "$art" > $artpath 2> /dev/null
+    icon=$artpath
+fi
+
+# send notification
+printf "$title\n<i>$artist</i>" | xargs -0 dunstify --raw_icon=$icon --timeout=4000 "Now Playing:"

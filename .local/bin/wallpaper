@@ -1,0 +1,36 @@
+#!/bin/bash
+
+set_wallpaper() {
+    cp $1 $destfile                                             # copy image
+    xwallpaper --stretch $destfile                              # set wallpaper
+    wal -c                                                      # clear cached colors
+    wal -q -n -i $destfile                                      # generate colors
+    xdotool key Super+Shift+r                                   # restart dwm
+
+    cp $HOME/.cache/wal/dunstrc $XDG_CONFIG_HOME/dunst/dunstrc  # cp over modified config
+    kill -SIGTERM $(pgrep dunst)                                # kill running dunst
+    dunst -config $XDG_CONFIG_HOME/dunst/dunstrc &              # start dunst again
+}
+
+# set default dir if no arg
+if [ -z "$1" ]; then
+    arg="$HOME/pictures/wallpapers"
+else
+    arg="$1"
+fi
+
+# dest and file type
+destfile=$XDG_DATA_HOME/bg
+filetype=$(file --mime-type $arg | awk '{print $2}')
+
+# if file, set wall else if dir give user choice to select files using img viewer
+if [[ -f $arg && ("$filetype" = "image/jpeg" || "$filetype" = "image/png") ]]; then
+    set_wallpaper "$arg"
+    echo "wallpaper changed and colorscheme updated"
+elif [[ -d $arg ]]; then
+    image=$(sxiv -ot $arg | sed "1q")
+    [[ -z $image ]] && echo "no image selected, aborting..." && exit
+    set_wallpaper "$image"
+else
+    echo -e "error: invalid image \"$arg\""
+fi

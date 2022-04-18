@@ -1,0 +1,81 @@
+#!/bin/sh
+
+# post-install script to be run as sudo
+
+###########
+# STORAGE #
+###########
+
+# trim ssd
+fstrim --all
+# enable periodic trim
+systemctl enable fstrim.timer
+# enable paccache timer
+systemctl enable paccache.timer
+# start the timer
+systemctl start paccache.timer
+
+#################
+# NETWORK & CPU #
+#################
+
+# enable network
+systemctl enable NetworkManager.service
+# enable thermald (cpu freq scaling)
+systemctl enable thermald.service
+# enable tlp (power savings)
+systemctl enable tlp.service
+# configure & enable firewall
+ufw default deny
+ufw allow from 192.168.0.0/24
+ufw limit ssh
+ufw enable
+
+############
+# TOUCHPAD #
+############
+
+# add the options "Tapping" & "NaturalScrolling"
+# with "on" & "true" values respectively under touchpad
+cp /usr/share/X11/xorg.conf.d/40-libinput.conf /etc/X11/xorg.conf.d/
+nvim /etc/X11/xorg.conf.d/40-libinput.conf
+
+############
+# GRAPHICS #
+############
+
+# DO NOT use the xf86-video-intel cause it's trash
+# you won't have a good night's sleep since you'll be
+# stuck fixing all the issues which CAN'T BE FIXED !!
+
+# instead fallback on the modesetting driver provided
+# by the kernel and enable 'vsync' and use 'glx' as the
+# backend for the compositor, in my case that's picom
+
+# the default backend 'xrender' doesn't work properly
+# and causes tearing issues even with 'vsync' enabled
+
+# enable hardware acceleration manually for browsers
+echo "Enable hardware acceleration for browsers (arch and manjaro wiki/forum)"
+
+# GIT CLONE DOTFILES
+
+# SETUP YAY
+
+# INSTALL (DWM, DWMBLOCKS, ST, DMENU, SLOCK)
+
+# SETUP SLOCK USING XINIT AND XSS-LOCK
+
+# SETUP OPENSSH, GNOME-KEYRING, AND PAM (/etc/pam.d/login)
+
+# ENABLE COLORS, PARALLEL DOWNLOADS IN PACMAN (/etc/pacman.conf)
+
+# USE ALL CORES FOR COMPILATION (AUR) (/etc/makepkg.conf)
+
+# SETUP BLUETOOTH USING BLUEZ AND MODIFY CONFIG TO AUTOENABLE AND BATTERY REPORTING (/etc/bluetooth/main.conf)
+
+# EDIT UDEVIL.CONF FOR EXFAT (/etc/udevil.conf) AND ENABLE SYSTEMD SERVICE FOR USER (DEVMON@USER.SERVICE)
+
+# MPD & SPOTIFYD USER LEVEL SERVICE
+
+# DISABLE SYSTEM BEEP (/etc/modprobe.d/nobeep.conf - blacklist pcspkr)

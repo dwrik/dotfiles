@@ -1,0 +1,129 @@
+shell
+-----
+zsh,is the shell
+zsh-syntax-highlighting,provides syntax highlighting for shell
+zsh-completions,provides completions for shell
+
+services
+--------
+ufw,simple firewall for network protection
+tlp,provides power management features for laptop
+thermald,provides protection from overheating on intel
+pacman-contrib,required for paccache to enable auto cleaning of residual packages
+
+drivers
+-------
+vulkan-intel,enables vulkan support
+mesa,required for 3D acceleration
+
+display
+-------
+xorg-xinit,used to startx
+xorg-server,is the display server
+xorg-xset,required for increasing key repeat rate
+xorg-xsetroot,required for setting cursor and stuff
+xorg-xev,for identifying keycodes
+brightnessctl,for controlling brightness
+xwallpaper,sets the wallpaper
+picom,is the compositor
+arandr,allows customization of displays
+
+window manager
+--------------
+dwm,is the window manager
+dwmblocks,is the status monitor
+
+sound
+-----
+pipewire,is the audio system (select wireplumber as session manager)
+pipewire-pulse,gives pipewire compatibility with pulseaudio
+pipewire-alsa,gives pipewire compatibility with alsa
+pulsemixer,is an audio controller
+pamixer,is a command-line audio interface
+alsa-utils,cli utility for managing alsa
+
+media
+-----
+mpd,is a media player daemon for local files
+mpd-mpris,mpris interface for mpd
+ncmpcpp,ncurses based console media player for interfacing with mpd
+mpv,is a minimalist video player
+ffmpegthumbnailer,gives video thumbnails for ranger
+
+pdf
+---
+zathura,is a pdf viewer with vim bindings
+zathura-pdf-mupdf,provides mupdf backend for zathura
+poppler,pdf rendering library for manipulating pdfs and also generating previews
+
+bluetooth
+---------
+bluez,provides the bluetooth stack
+bluez-utils,provides bluetoothctl to interact with bluetooth stack
+blueman,gui tool for managing bluetooth connections
+
+compressed
+----------
+unzip,extract zip files
+unrar,extract rar files
+zip,create zip files
+atool,create and extract archives
+
+tools
+-----
+libva-utils,provides tools for verifying hardware acceleration
+intel-gpu-tools, tools for monitoring gpu usage
+htop,task manager tool
+unclutter,hides an idle mouse pointer
+wget,is a network downloader
+python-pywal,autogenerates colorschemes from images
+xdotool,cli tool for X11 automation
+neofetch,provides info with eye candy
+xclip,cli interface to the X11 clipboard
+maim,is a screenshot utility
+fzf,is a fuzzy finder
+dunst,is a notification daemon
+libnotify,lib for sending notifications
+xss-lock,automatically listens for events (dpms, suspend etc.) and invokes locker
+slock,is the suckless locker program
+tree,tree viewer for filesystem
+openssh,tool for connecting with ssh (git, etc.)
+bc,is a powerful calculator
+figlet,provides ascii graphics
+net-tools,utilities for checking network connections
+aria2,is a cli downloader
+udevil,mounting tool
+exfat-utils,utilities for exfat fs
+bat,provides highlighting & syntax for previews
+ranger,file manager
+ueberzug,image previewer
+
+keyring
+-------
+gnome-keyring,is the system keyring
+libsecret,allows other applications to request secrets from keyring
+
+applications
+------------
+st,is the terminal
+dmenu,extensible menu which also provides an app launcher
+lsd,ls but with icons and colors
+spotifyd,is a lightweight daemon for spotify
+playerctl,is an mpris controller for audio
+code,an open source version of vscode editor
+brave-bin,default browser
+google-chrome,fallback browser
+yay,aur helper and wrapper for pacman
+spotify-tui,rust based client for interactive with spotifyd
+
+programming
+-----------
+nodejs,event based javascript runtime
+npm,package manager for node
+
+fonts
+-----
+noto-fonts,base fontset with large unicode coverage
+noto-fonts-emoji,provides the emojis
+libxft-bgra,fixes emojis in dmenu
+nerd-fonts-source-code-pro,monospaced fonts with glyphs

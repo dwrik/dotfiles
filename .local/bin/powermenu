@@ -1,0 +1,34 @@
+#!/bin/bash
+
+# source colors from pywal cache
+. "$XDG_CACHE_HOME/wal/colors.sh"
+
+# set bg and fg colors
+# for normal and selection
+nb=$color8
+nf=$color0
+sb=$color0
+sf=$color14
+
+# define power menu options here
+options=("襤 shutdown" "ﰇ reboot" "⏾ sleep" " kill-xorg")
+
+# constructing input string for piping into dmenu
+for option in "${options[@]}"; do
+    input+="$option\n"
+done
+
+# get user's choice
+choice=$(echo -en $input | dmenu -i -l "${#options[@]}" -p "powermenu:" -fn "monospace-11" -nb $nb -nf $nf -sb $sb -sf $sf)
+
+# strip leading glyph
+chosen=$(printf "$choice" | cut -d " " -f 2)
+
+# define cmd to execute here
+case $chosen in
+    "shutdown") sudo shutdown now      ;;
+    "reboot")   sudo reboot            ;;
+    "sleep")    sudo systemctl suspend ;;
+    "killX")    killall xinit          ;;
+    *)          exit 1                 ;;
+esac

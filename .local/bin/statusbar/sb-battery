@@ -1,0 +1,25 @@
+#!/usr/bin/bash
+
+# system battery
+state=$(cat /sys/class/power_supply/BAT0/status)
+charge=$(cat /sys/class/power_supply/BAT0/capacity)
+
+case $state in
+    "Charging")    icon=""; state=" ($state)"    ;;
+    "Unknown")     icon=""; state=" (Connected)" ;;
+    "Discharging") icon=""; state=""             ;;
+    *) ;;
+esac
+
+echo -n "$icon $charge%$state"
+
+# bluetooth audio
+# warning: this assumes there is only 1 connected audio device
+device=$(upower --enumerate | grep -iE "speaker|headphone|headset|audio")
+
+[ -z $device ] && exit
+
+model=$(upower --show-info $device | grep "model" | sed 's/ //g' | cut -d":" -f2)
+charge=$(upower --show-info $device | grep "percentage" | awk '{print $2}')
+
+echo "  $model $charge"

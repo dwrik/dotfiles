@@ -1,0 +1,6 @@
+#!/bin/sh
+
+# requires xorg-xev to be installed
+# output - <keycode> <keysym>, <keyname>
+
+xev | awk -F'[ )]+' '/^KeyPress/ { a[NR+2] } NR in a { printf "%-3s\t%s\t%s\n", $5, $7, $8 }'

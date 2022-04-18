@@ -1,0 +1,19 @@
+#!/usr/bin/bash
+
+interface="wlp0s20f3"
+
+state=$(cat /sys/class/net/wlp0s20f3/operstate)
+
+case "$state" in
+    "up")
+        icon=" "
+        ssid=$(nmcli --fields name connection show --active | grep -iv "name" | sed -e 's/\ *$//g')
+        ;;
+
+    "down")
+        icon="睊 "
+        ssid="Disconnected"
+        ;;
+esac
+
+echo "$icon$ssid"
