@@ -1,0 +1,14 @@
+# exclude everything
+*
+
+# allow .gitignore file
+!.gitignore
+
+# allow specific files
+!.zshrc
+!.zprofile
+
+# allow specific directories and their contents
+!.config/
+!.config/**
+
