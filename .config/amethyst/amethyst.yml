@@ -1,0 +1,158 @@
+# Note due to issue 1419 (https://github.com/ianyh/Amethyst/issues/1419) some
+# config values may conflict and not work if they are the same as the default
+# values for Amethyst. You can see these values on GitHub at
+# https://github.com/ianyh/Amethyst/blob/development/Amethyst/default.amethyst
+# If you're experiencing conflicts and the settings are the same as the default,
+# comment out the commands in this file.
+#
+# In order to register changes restart Amethyst.
+# If you experience issues pulling in the changes you can also quit Amethyst and run: `defaults delete com.amethyst.Amethyst.plist`
+# This removes the current preferences and causes Amethyst to restart with default preferences and pull configs from this file.
+
+################
+# mod bindings #
+################
+
+mod1:
+  - option
+
+mod2:
+  - option
+  - shift
+
+#############
+# conflicts #
+#############
+
+# a separate mod is used for easier
+# rebinding of conflicting bindings
+
+mod3:
+  - option
+  - shift
+  - control
+
+# wide layout
+focus-screen-1:
+  mod: mod3
+  key: w
+
+# throw left
+swap-screen-ccw:
+  mod: mod3
+  key: h
+
+# throw right
+swap-screen-cw:
+  mod: mod3
+  key: l
+
+######################
+# layouts & bindings #
+######################
+
+layouts:
+  - tall
+  - wide
+  - fullscreen
+  - two-pane
+  - floating
+
+select-wide-layout:
+  mod: mod1
+  key: w
+
+select-tall-layout:
+  mod: mod1
+  key: t
+
+select-fullscreen-layout:
+  mod: mod1
+  key: f
+
+display-current-layout:
+  mod: mod1
+  key: i
+
+##################
+# focus bindings #
+##################
+
+focus-ccw:
+  mod: mod1
+  key: k
+
+focus-cw:
+  mod: mod1
+  key: j
+
+##############################
+# resizing & moving bindings #
+##############################
+
+shrink-main:
+  mod: mod1
+  key: h
+
+expand-main:
+  mod: mod1
+  key: l
+
+swap-ccw:
+  mod: mod2
+  key: k
+
+swap-cw:
+  mod: mod2
+  key: j
+
+swap-main:
+  mod: mod2
+  key: enter
+
+throw-space-left:
+  mod: mod2
+  key: h
+
+throw-space-right:
+  mod: mod2
+  key: l
+
+toggle-float:
+  mod: mod2
+  key: space
+
+######################
+# lifecycle bindings #
+######################
+
+reevaluate-windows:
+  mod: mod1
+  key: z
+
+relaunch-amethyst:
+  mod: mod1
+  key: x
+
+#################
+# other options #
+#################
+
+window-margins: true
+window-margin-size: 15
+new-windows-to-main: true
+
+screen-padding-top: 5
+screen-padding-left: 5
+screen-padding-right: 5
+screen-padding-bottom: 5
+
+enables-layout-hud: true
+enables-layout-hud-on-space-change: false
+
+focus-follows-mouse: true
+follow-space-thrown-windows: true
+
+float-small-windows: true
+floating: []
+
