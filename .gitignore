@@ -12,3 +12,6 @@
 !.config/
 !.config/**
 
+# ignore default configs
+.config/neofetch
+
