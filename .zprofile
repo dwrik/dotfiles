@@ -1,3 +1,3 @@
-# brew configuration
+# homebrew configuration
 eval "$(/opt/homebrew/bin/brew shellenv)"
 
