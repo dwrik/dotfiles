@@ -150,7 +150,7 @@ screen-padding-bottom: 5
 enables-layout-hud: true
 enables-layout-hud-on-space-change: false
 
-focus-follows-mouse: true
+focus-follows-mouse: false
 follow-space-thrown-windows: true
 
 float-small-windows: true
