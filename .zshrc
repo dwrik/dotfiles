@@ -27,7 +27,7 @@ stty stop undef          # disable ctrl-s to freeze terminal
 
 # initialize
 if type brew &>/dev/null; then
-    FPATH=$(brew --prefix)/share/zsh-completions:$FPATH
+    fpath=(/opt/homebrew/share/zsh/{completions,site-functions} $fpath)
     autoload -Uz compinit
     compinit
 fi
@@ -55,7 +55,7 @@ alias ls="ls"
 alias la="ls -a"
 alias ll="ls -l"
 alias lla="ls -la"
-alias notes="vim ~/Notes"
+alias nnn='nnn -edioAR'
 alias grep="grep --color=auto"
 alias diff="diff --color=auto"
 alias weather="curl https://wttr.in/"
@@ -66,6 +66,14 @@ alias weather="curl https://wttr.in/"
 
 PROMPT="%1~ > "
 RPROMPT="[$?]"
+
+##############
+# app config #
+##############
+
+source <(fzf --zsh)
+export PATH="${PATH}:${HOME}/Scripts"
+export FZF_DEFAULT_COMMAND="rg --files --hidden --no-ignore -g '!{**/node_modules/**,**/.git/**,**/.DS_Store,.zsh_sessions,.vim,.android,.cargo,.m2,.npm,.rustup,.vscode,go,Applications,Library,Public,Postman,Pictures,Music,Movies,Videos,.Trash}'"
 
 ############################################
 # syntax highlighting (always keep at end) #
