@@ -73,6 +73,7 @@ RPROMPT="[$?]"
 
 source <(fzf --zsh)
 export PATH="${PATH}:${HOME}/Scripts"
+export FZF_CTRL_R_OPTS="${FZF_CTRL_R_OPTS} --layout=reverse"
 export FZF_CTRL_T_OPTS="--walker-skip .git,.vim,node_modules,target,Applications,Library,Public,Postman,.Trash"
 export FZF_ALT_C_OPTS="--walker-skip .git,.vim,node_modules,target,Applications,Library,Public,Postman,.Trash --preview 'tree -C {}'"
 export FZF_DEFAULT_COMMAND="rg --files --hidden --no-ignore -g '!{**/node_modules/**,**/.git/**,**/.DS_Store,.zsh_sessions,.vim,.android,.cargo,.m2,.npm,.rustup,.vscode,go,Applications,Library,Public,Postman,Pictures,Music,Movies,Videos,.Trash}'"
