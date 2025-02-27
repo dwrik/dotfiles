@@ -1,0 +1,22 @@
+[general]
+    import = [
+        # colorschemes @ https://github.com/alacritty/alacritty-theme
+        # warm : doom_one, gruvbox_material_hard_dark
+        # cool : nightfox, ayu_mirage, horizon_dark
+        "~/.config/alacritty/themes/themes/horizon_dark.toml",
+    ]
+[window]
+    dynamic_padding = true
+    padding = { x = 16, y = 10 }
+    decorations = "Buttonless"
+    resize_increments = true
+[font]
+    size = 14
+[[hints.enabled]]
+    command = "open"
+    hyperlinks = true
+    post_processing = true
+    persist = false
+    mouse.enabled = true
+    binding = { key = "O", mods = "Control|Shift" }
+    regex = "(ipfs:|ipns:|magnet:|mailto:|gemini://|gopher://|https://|http://|news:|file:|git://|ssh:|ftp://)[^\u0000-\u001F\u007F-\u009F<>\"\\s{-}\\^⟨⟩`\\\\]+"
