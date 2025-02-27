@@ -55,8 +55,8 @@ layouts:
   - tall
   - wide
   - fullscreen
-  - two-pane
   - floating
+  - two-pane
 
 select-wide-layout:
   mod: mod1
@@ -65,6 +65,10 @@ select-wide-layout:
 select-tall-layout:
   mod: mod1
   key: t
+
+select-two-pane-layout:
+  mod: mod1
+  key: o
 
 select-fullscreen-layout:
   mod: mod1
@@ -139,7 +143,7 @@ relaunch-amethyst:
 #################
 
 window-margins: true
-window-margin-size: 15
+window-margin-size: 10
 new-windows-to-main: true
 
 screen-padding-top: 5
