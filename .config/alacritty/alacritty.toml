@@ -11,12 +11,27 @@
     decorations = "Buttonless"
     resize_increments = true
 [font]
-    size = 14
+    # brew install font-jetbrains-mono-nerd-font
+    normal = { family = "JetBrainsMono Nerd Font", style = "Regular" }
+    size = 13
 [[hints.enabled]]
     command = "open"
     hyperlinks = true
     post_processing = true
     persist = false
     mouse.enabled = true
-    binding = { key = "O", mods = "Control|Shift" }
+    binding = { key = "O", mods = "Command|Shift" }
     regex = "(ipfs:|ipns:|magnet:|mailto:|gemini://|gopher://|https://|http://|news:|file:|git://|ssh:|ftp://)[^\u0000-\u001F\u007F-\u009F<>\"\\s{-}\\^⟨⟩`\\\\]+"
+
+
+# vi mode - cmd + shift + space
+[[keyboard.bindings]]
+    key = "Space"
+    mods = "Command|Shift"
+    mode = "~Vi"
+    action = "ToggleViMode"
+[[keyboard.bindings]]
+    key = "Space"
+    mods = "Control|Shift"
+    mode = "~Vi"
+    action = "None"
