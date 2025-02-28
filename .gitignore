@@ -13,7 +13,11 @@
 !.config/
 !.config/**
 
-# ignore default configs
+# ignore defaults & redundants
 .config/neofetch
 .config/nnn
+.config/coc
+.config/.DS_Store
+.config/qBittorrent
+.config/alacritty/themes
 
