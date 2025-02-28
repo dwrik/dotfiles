@@ -5,5 +5,5 @@ eval "$(/opt/homebrew/bin/brew shellenv)"
 export VISUAL="vim"
 export EDITOR="vim"
 export PAGER="less"
-export TERMINAL="wezterm"
+export TERMINAL="alacritty"
 
