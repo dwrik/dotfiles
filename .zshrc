@@ -50,11 +50,11 @@ bindkey -v '^?' backward-delete-char
 # aliases #
 ###########
 
-alias l="ls"
-alias ls="ls"
-alias la="ls -a"
-alias ll="ls -l"
-alias lla="ls -la"
+alias l="ls --color=auto"
+alias ls="ls --color=auto"
+alias la="ls -a --color=auto"
+alias ll="ls -l --color=auto"
+alias lla="ls -la --color=auto"
 alias nnn='nnn -edioAR'
 alias grep="grep --color=auto"
 alias diff="diff --color=auto"
@@ -64,8 +64,8 @@ alias weather="curl https://wttr.in/"
 # prompt #
 ##########
 
-PROMPT="%1~ > "
-RPROMPT="[$?]"
+eval "$(starship init zsh)"
+export STARSHIP_CONFIG=~/.config/starship/starship.toml
 
 ##############
 # app config #
