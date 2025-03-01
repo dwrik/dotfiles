@@ -13,7 +13,7 @@
 [font]
     # brew install font-jetbrains-mono-nerd-font
     normal = { family = "JetBrainsMono Nerd Font", style = "Regular" }
-    size = 13
+    size = 15
 [[hints.enabled]]
     command = "open"
     hyperlinks = true
