@@ -7,7 +7,7 @@
 # allow specific files
 !.zshrc
 !.zprofile
-!.vimrc
+!.zshenv
 
 # allow specific directories and their contents
 !.config/
@@ -19,5 +19,7 @@
 .config/coc
 .config/.DS_Store
 .config/qBittorrent
+.config/vim/plugged
+.config/vim/autoload
 .config/alacritty/themes
 
