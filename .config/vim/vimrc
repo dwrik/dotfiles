@@ -12,12 +12,13 @@ call plug#begin()
 
 " Plugins
 Plug 'tpope/vim-fugitive'                           " Git Integration
-Plug 'tpope/vim-vinegar'                            " Improved Netrw
+Plug 'preservim/nerdtree'                           " File Tree
 Plug 'ap/vim-buftabline'                            " Buffer Bar
 Plug 'itchyny/lightline.vim'                        " Status Line
 Plug 'nordtheme/vim'                                " Nord Theme
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } } " Fuzzy Finder
 Plug 'junegunn/fzf.vim'                             " FZF Vim Integration
+Plug 'jiangmiao/auto-pairs'                         " Automatic Bracket Pairs
 Plug 'neoclide/coc.nvim', { 'branch': 'release' }   " LSP & Autocompletion
 
 call plug#end()
@@ -76,7 +77,6 @@ set laststatus=2        " Enable status line
 set cursorline          " Enable cursor line indicator
 set wildmenu            " Enable command mode completions
 set noshowmode          " Hide display mode below status bar
-"set showcmd             " Show partial command
 
 " Spaces and Tabs
 set tabstop=4
@@ -177,6 +177,9 @@ nnoremap <Leader>fc :GFiles?<CR>| " Search git changed files
 nnoremap <Leader>fg :Rg<CR>|      " Live grep project directory
 nnoremap <Leader>fl :BLines<CR>|  " Grep lines in current buffer
 
+" NerdTree
+nnoremap <C-n> :NERDTreeToggle<CR>
+
 " CoC Settings
 " For adding new lsps:
 "   1 - add in coc_global_extensions list
@@ -187,19 +190,10 @@ if filereadable(expand('$XDG_CONFIG_HOME/vim/coc-settings.vim'))
   source $XDG_CONFIG_HOME/vim/coc-settings.vim
 endif
 
-" Vinegar (default bindings)
-"   gh : toggle hidden files
-"   ~  : go to home directory
-"   -  : go up the file tree
-"   .  : pre populate path at the end of command mode
-"   y  : yank absolute path
-
 " Start Obsession (Auto session saving)
 " autocmd VimEnter * Obsession
 
-" TODO: auto bracket pairs (reproduce issue first)
-" TODO: replace vinegar with nerdtree
-" TODO: broken snippet behavior (probably needs coc-snippets or ultisnips)
+" TODO: expand snippets more easily (coc-snippets)
 " TODO: custom minimal start screen
 " TODO: coc-git bindings
 "           blame
