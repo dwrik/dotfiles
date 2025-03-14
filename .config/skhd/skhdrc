@@ -1,2 +1,11 @@
+#  a list of all built-in modifier and literal keywords can
+#  be found at https://github.com/koekeishiya/skhd/issues/1
+
 # open terminal, blazingly fast compared to iTerm/Hyper
-cmd - return : alacritty msg create-window 2>/dev/null || open -a Alacritty
+alt - return : alacritty msg create-window 2>/dev/null || open -a Alacritty
+
+# simulate arrow keys using fn + hjkl
+fn - h : skhd -k "left"
+fn - j : skhd -k "down"
+fn - k : skhd -k "up"
+fn - l : skhd -k "right"
