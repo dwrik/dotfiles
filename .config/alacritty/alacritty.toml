@@ -2,8 +2,8 @@
     import = [
         # colorschemes @ https://github.com/alacritty/alacritty-theme
         # warm : doom_one, gruvbox_material_hard_dark
-        # cool : nightfox, ayu_mirage, horizon_dark
-        "~/.config/alacritty/themes/themes/horizon_dark.toml",
+        # cool : nord, nightfox, ayu_mirage, horizon_dark
+        "~/.config/alacritty/themes/themes/nord.toml",
     ]
 [window]
     dynamic_padding = true
@@ -28,10 +28,10 @@
 [[keyboard.bindings]]
     key = "Space"
     mods = "Command|Shift"
-    mode = "~Vi"
+    mode = "~Search"
     action = "ToggleViMode"
 [[keyboard.bindings]]
     key = "Space"
     mods = "Control|Shift"
-    mode = "~Vi"
+    mode = "~Search"
     action = "None"
