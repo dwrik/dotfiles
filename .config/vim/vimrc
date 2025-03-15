@@ -18,7 +18,8 @@ Plug 'itchyny/lightline.vim'                        " Status Line
 Plug 'nordtheme/vim'                                " Nord Theme
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } } " Fuzzy Finder
 Plug 'junegunn/fzf.vim'                             " FZF Vim Integration
-Plug 'jiangmiao/auto-pairs'                         " Automatic Bracket Pairs
+Plug 'tpope/vim-commentary'                         " Comment Plugin
+Plug 'raimondi/delimitmate'                         " Automatic Bracket Pairs
 Plug 'neoclide/coc.nvim', { 'branch': 'release' }   " LSP & Autocompletion
 
 call plug#end()
@@ -153,20 +154,20 @@ let g:lightline = { 'colorscheme': 'nord' }
 let g:fzf_vim = {}
 let g:fzf_vim_preview_window = ['right,50%,<70(down,50%)']
 let g:fzf_colors =
-\ { 'fg':         ['fg', 'Normal'],
-  \ 'bg':         ['bg', 'Normal'],
-  \ 'preview-bg': ['bg', 'NormalFloat'],
-  \ 'hl':         ['fg', 'Comment'],
-  \ 'fg+':        ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
-  \ 'bg+':        ['bg', 'CursorLine', 'CursorColumn'],
-  \ 'hl+':        ['fg', 'Statement'],
-  \ 'info':       ['fg', 'PreProc'],
-  \ 'border':     ['fg', 'Ignore'],
-  \ 'prompt':     ['fg', 'Conditional'],
-  \ 'pointer':    ['fg', 'Exception'],
-  \ 'marker':     ['fg', 'Keyword'],
-  \ 'spinner':    ['fg', 'Label'],
-  \ 'header':     ['fg', 'Comment'] }
+  \ { 'fg':         ['fg', 'Normal'],
+    \ 'bg':         ['bg', 'Normal'],
+    \ 'preview-bg': ['bg', 'NormalFloat'],
+    \ 'hl':         ['fg', 'Comment'],
+    \ 'fg+':        ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
+    \ 'bg+':        ['bg', 'CursorLine', 'CursorColumn'],
+    \ 'hl+':        ['fg', 'Statement'],
+    \ 'info':       ['fg', 'PreProc'],
+    \ 'border':     ['fg', 'Ignore'],
+    \ 'prompt':     ['fg', 'Conditional'],
+    \ 'pointer':    ['fg', 'Exception'],
+    \ 'marker':     ['fg', 'Keyword'],
+    \ 'spinner':    ['fg', 'Label'],
+    \ 'header':     ['fg', 'Comment'] }
 let $FZF_DEFAULT_OPTS = '--bind=ctrl-u:preview-half-page-up,ctrl-d:preview-half-page-down'
 nnoremap <Leader>ff :Files<CR>|   " Find files
 nnoremap <Leader>fb :Buffers<CR>| " Find buffers
@@ -187,17 +188,8 @@ nnoremap <C-n> :NERDTreeToggle<CR>
 let g:coc_global_extensions = ['coc-git', 'coc-vimlsp', 'coc-json', 'coc-sh', 'coc-java', 'coc-pyright']
 " Source coc vim settings if it exists
 if filereadable(expand('$XDG_CONFIG_HOME/vim/coc-settings.vim'))
-  source $XDG_CONFIG_HOME/vim/coc-settings.vim
+    source $XDG_CONFIG_HOME/vim/coc-settings.vim
 endif
 
 " Start Obsession (Auto session saving)
 " autocmd VimEnter * Obsession
-
-" TODO: expand snippets more easily (coc-snippets)
-" TODO: custom minimal start screen
-" TODO: coc-git bindings
-"           blame
-"           chunk info
-"           next/prev chunk
-"           open current line in browser
-"           copy permalink of current line
