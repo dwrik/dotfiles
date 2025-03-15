@@ -2,6 +2,14 @@
 " CoC Configurations
 " ==================
 
+" Coc Git bindings
+nnoremap <leader>gb :CocCommand git.showBlameDoc<CR>|  " git blame
+nnoremap <leader>gi :CocCommand git.chunkInfo<CR>|     " git chunk info
+nnoremap ]g :CocCommand git.nextChunk<CR>|             " git next chunk
+nnoremap [g :CocCommand git.prevChunk<CR>|             " git prev chunk
+nnoremap <leader>go :CocCommand git.browserOpen<CR>|   " open current line in browser
+nnoremap <leader>gc :CocCommand git.copyPermalink<CR>| " copy current line permalink
+
 " Lightline configuration
 " See `:h coc-status` for integrations with external plugins
 let g:lightline = {
