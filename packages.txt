@@ -1,0 +1,16 @@
+aria2
+bat
+ffmpeg
+fzf
+imagemagick
+koekeishiya/formulae/skhd
+maven
+neofetch
+node
+powerlevel10k
+ripgrep
+tree
+yazi
+yt-dlp
+zsh-completions
+zsh-syntax-highlighting
