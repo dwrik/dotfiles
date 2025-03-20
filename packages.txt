@@ -10,6 +10,7 @@ node
 powerlevel10k
 ripgrep
 tree
+wezterm
 yazi
 yt-dlp
 zsh-completions
