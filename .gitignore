@@ -8,12 +8,14 @@
 !.zshrc
 !.zprofile
 !.zshenv
+!packages.txt
 
 # allow specific directories and their contents
 !.config/
 !.config/**
-!Scripts/
-!Scripts/**
+!.local/
+!.local/bin/
+!.local/bin/**
 
 # ignore defaults & redundants
 .config/neofetch
