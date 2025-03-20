@@ -12,28 +12,55 @@ call plug#begin()
 
 " Plugins
 Plug 'tpope/vim-fugitive'                           " Git Integration
+Plug 'doums/darcula'                                " Colorscheme
 Plug 'preservim/nerdtree'                           " File Tree
 Plug 'ap/vim-buftabline'                            " Buffer Bar
 Plug 'itchyny/lightline.vim'                        " Status Line
-Plug 'nordtheme/vim'                                " Nord Theme
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } } " Fuzzy Finder
-Plug 'junegunn/fzf.vim'                             " FZF Vim Integration
-Plug 'tpope/vim-commentary'                         " Comment Plugin
-Plug 'raimondi/delimitmate'                         " Automatic Bracket Pairs
+Plug 'junegunn/fzf.vim'                             " FZF Vim Options
+Plug 'tpope/vim-commentary'                         " Comments Plugin
+Plug 'raimondi/delimitmate'                         " Auto Bracket Pairs
 Plug 'neoclide/coc.nvim', { 'branch': 'release' }   " LSP & Autocompletion
+Plug 'ryanoasis/vim-devicons'                       " Filetype Glyphs for Plugins
 
 call plug#end()
 
-"Plug 'puremourning/vimspector' " Debugging
-"Plug 'tpope/vim-obsession'     " Auto Session Saving
-"Plug 'SirVer/ultisnips'        " Snippet Manager
+"Plug 'puremourning/vimspector'                     " Debugging
+"Plug 'tpope/vim-obsession'                         " Auto Session Saving
+"Plug 'SirVer/ultisnips'                            " Snippet Manager
+
+" ========================
+" Java Custom Highlighting
+" ========================
+
+let g:java_highlight_functions = "style" " highlight function declarations
+let g:java_highlight_signature = 1       " highlight signature elements distinctly
+let g:java_minlines = 50                 " prevent highlighting errors when scrolling
 
 " ========================
 " Colorscheme
 " ========================
 
 set termguicolors
-colorscheme nord
+colorscheme darcula
+let lightline_colorscheme = 'darculaOriginal' " [darcula, darculaOriginal]
+
+" Darcula custom highlight groups for Coc
+hi! link CocErrorSign ErrorSign
+hi! link CocWarningSign WarningSign
+hi! link CocInfoSign InfoSign
+hi! link CocHintSign HintSign
+hi! link CocErrorFloat Pmenu
+hi! link CocWarningFloat Pmenu
+hi! link CocInfoFloat Pmenu
+hi! link CocHintFloat Pmenu
+hi! link CocHighlightText IdentifierUnderCaret
+hi! link CocHighlightRead IdentifierUnderCaret
+hi! link CocHighlightWrite IdentifierUnderCaretWrite
+hi! link CocErrorHighlight CodeError
+hi! link CocWarningHighlight CodeWarning
+hi! link CocInfoHighlight CodeInfo
+hi! link CocHintHighlight CodeHint
 
 " ========================
 " General Settings
@@ -110,9 +137,9 @@ nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 
 " Resize splits
-nnoremap <S-Left> <C-w><
-nnoremap <S-Down> <C-w>-
-nnoremap <S-Up> <C-w>+
+nnoremap <S-Left>  <C-w><
+nnoremap <S-Down>  <C-w>-
+nnoremap <S-Up>    <C-w>+
 nnoremap <S-Right> <C-w>>
 
 " Reposition cursor
@@ -125,7 +152,7 @@ nnoremap N Nzzzv
 " Misc
 nnoremap // :noh<CR>
 nnoremap Q :bdelete! %<CR>
-nnoremap <leader>qq :q!<CR>
+nnoremap <leader>qq :qa!<CR>
 
 " ========================
 " Plugin Configurations
@@ -147,8 +174,19 @@ nnoremap gb8 <Plug>BufTabLine.Go(8)
 nnoremap gb9 <Plug>BufTabLine.Go(9)
 nnoremap gb0 <Plug>BufTabLine.Go(10)
 
-" Lightline (this gets overwritten in coc-settings.vim if using CoC)
-let g:lightline = { 'colorscheme': 'nord' }
+" Lightline
+let g:lightline = {
+    \ 'colorscheme': lightline_colorscheme,
+    \ 'active': {
+    \   'left': [ [ 'mode', 'paste' ],
+    \             [ 'cocstatus', 'readonly', 'filename', 'modified', 'gitbranch' ] ]
+    \ },
+    \ 'component_function': {
+    \   'cocstatus': 'coc#status',
+    \   'gitbranch': 'FugitiveHead'
+    \ },
+    \ }
+autocmd User CocStatusChange,CocDiagnosticChange call lightline#update()
 
 " FZF
 let g:fzf_vim = {}
@@ -180,6 +218,8 @@ nnoremap <Leader>fl :BLines<CR>|  " Grep lines in current buffer
 
 " NerdTree
 nnoremap <C-n> :NERDTreeToggle<CR>
+autocmd FileType nerdtree setlocal signcolumn=no
+autocmd BufWinLeave * if &filetype == 'nerdtree' | call interrupt() | endif
 
 " CoC Settings
 " For adding new lsps:

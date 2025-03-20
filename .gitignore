@@ -12,6 +12,8 @@
 # allow specific directories and their contents
 !.config/
 !.config/**
+!Scripts/
+!Scripts/**
 
 # ignore defaults & redundants
 .config/neofetch

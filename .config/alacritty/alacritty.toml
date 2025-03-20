@@ -35,3 +35,14 @@
     mods = "Control|Shift"
     mode = "~Search"
     action = "None"
+
+[[keyboard.bindings]]
+    key = "k"
+    mods = "Command"
+    mode = "~Vi"
+    action = "ScrollLineUp"
+[[keyboard.bindings]]
+    key = "j"
+    mods = "Command"
+    mode = "~Vi"
+    action = "ScrollLineDown"

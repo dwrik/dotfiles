@@ -10,21 +10,6 @@ nnoremap [g :CocCommand git.prevChunk<CR>|             " git prev chunk
 nnoremap <leader>go :CocCommand git.browserOpen<CR>|   " open current line in browser
 nnoremap <leader>gc :CocCommand git.copyPermalink<CR>| " copy current line permalink
 
-" Lightline configuration
-" See `:h coc-status` for integrations with external plugins
-let g:lightline = {
-    \ 'colorscheme': 'nord',
-    \ 'active': {
-    \   'left': [ [ 'mode', 'paste' ],
-    \             [ 'cocstatus', 'readonly', 'filename', 'modified' ] ]
-    \ },
-    \ 'component_function': {
-    \   'cocstatus': 'coc#status'
-    \ },
-    \ }
-" Use autocmd to force lightline update
-autocmd User CocStatusChange,CocDiagnosticChange call lightline#update()
-
 function! CheckBackspace() abort
     let col = col('.') - 1
     return !col || getline('.')[col - 1]  =~ '\s'

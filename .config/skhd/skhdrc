@@ -1,8 +1,11 @@
-#  a list of all built-in modifier and literal keywords can
-#  be found at https://github.com/koekeishiya/skhd/issues/1
+# a list of all built-in modifier and literal keywords can
+# be found at https://github.com/koekeishiya/skhd/issues/1
 
-# open terminal, blazingly fast compared to iTerm/Hyper
-alt - return : alacritty msg create-window 2>/dev/null || open -a Alacritty
+# open terminal
+alt - return : open -na wezterm
+
+# fuzzy find and open file using default app
+shift + alt - f : open -na wezterm --args start zsh -i -c 'openw $(fzf)'
 
 # simulate arrow keys using fn + hjkl
 fn - h : skhd -k "left"

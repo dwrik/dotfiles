@@ -157,6 +157,6 @@ enables-layout-hud-on-space-change: false
 focus-follows-mouse: false
 follow-space-thrown-windows: true
 
-float-small-windows: true
+float-small-windows: false
 floating: []
 

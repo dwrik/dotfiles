@@ -60,15 +60,19 @@ alias grep="grep --color=auto"
 alias diff="diff --color=auto"
 alias weather="curl https://wttr.in/"
 
-##########
-# prompt #
-##########
-
-source /opt/homebrew/share/powerlevel10k/powerlevel10k.zsh-theme
-
 ##############
 # app config #
 ##############
+
+# yazi cd on exit
+function y() {
+    local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
+    yazi "$@" --cwd-file="$tmp"
+    if cwd="$(command cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
+        builtin cd -- "$cwd"
+    fi
+    rm -f -- "$tmp"
+}
 
 # custom scripts
 export PATH="$HOME/Scripts:$PATH"
@@ -84,7 +88,7 @@ bindkey "ç" fzf-cd-widget
 # run below command in vim to generate FZF colors from the
 # current vim colorscheme and then add the generated line here
 # :call append('$', printf('export FZF_DEFAULT_OPTS="%s"', matchstr(fzf#wrap().options, "--color[^']*")))
-export FZF_DEFAULT_OPTS="--border=rounded --no-scrollbar --color=bg+:#3B4252,bg:#2E3440,spinner:#81A1C1,hl:#616E88,fg:#D8DEE9,header:#616E88,info:#81A1C1,pointer:#81A1C1,marker:#81A1C1,fg+:#D8DEE9,prompt:#81A1C1,hl+:#81A1C1"
+export FZF_DEFAULT_OPTS="--border=rounded --no-scrollbar --color=bg+:#323232,bg:#2B2B2B,spinner:#CC7832,hl:#808080,fg:#A9B7C6,header:#808080,info:#BBB529,pointer:#CC7832,marker:#CC7832,fg+:#A9B7C6,prompt:#CC7832,hl+:#CC7832"
 # command that fzf runs to filter files
 export FZF_DEFAULT_COMMAND="rg --files --hidden --no-ignore -g '!{**/node_modules/**,**/.git/**,**/.DS_Store,**/.zsh_sessions/**,**/.config/alacritty/themes/**,**/.config/coc/**,**/vim/plugged/**,**/venv/**,.cache,.local,.android,.cargo,.m2,.npm,.rustup,.vscode,go,Applications,Library,Public,Postman,Pictures,Music,Movies,Videos,.Trash}'"
 
@@ -99,4 +103,5 @@ source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 ######################
 
 # to customize run `p10k configure` or edit ~/.p10k.zsh
+source /opt/homebrew/share/powerlevel10k/powerlevel10k.zsh-theme
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
