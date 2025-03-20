@@ -9,6 +9,7 @@
 !.zprofile
 !.zshenv
 !packages.txt
+!README.md
 
 # allow specific directories and their contents
 !.config/
