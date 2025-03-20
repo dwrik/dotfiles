@@ -74,8 +74,8 @@ function y() {
     rm -f -- "$tmp"
 }
 
-# custom scripts
-export PATH="$HOME/Scripts:$PATH"
+# add user scripts to path
+export PATH="$HOME/.local/bin:$PATH"
 
 # fzf shell integration options
 export FZF_CTRL_T_COMMAND=
