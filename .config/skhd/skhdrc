@@ -7,8 +7,12 @@ alt - return : open -na wezterm
 # fuzzy find and open file using default app
 shift + alt - f : open -na wezterm --args start zsh -i -c 'openw $(fzf)'
 
-# simulate arrow keys using fn + hjkl
-fn - h : skhd -k "left"
-fn - j : skhd -k "down"
-fn - k : skhd -k "up"
-fn - l : skhd -k "right"
+# simulate arrow keys using option + hjkl
+alt - h : skhd -k "left"
+alt - j : skhd -k "down"
+alt - k : skhd -k "up"
+alt - l : skhd -k "right"
+
+# navigate word boundaries using option + np
+alt - p : skhd -k "alt - left"
+alt - n : skhd -k "alt - right"
