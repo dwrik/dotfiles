@@ -3,12 +3,12 @@ local action = wezterm.action
 local config = {}
 
 -- colorscheme
-config.color_scheme = 'Darcula (base16)'
+config.color_scheme = 'NvimDark'
 
 -- font
 config.font_size = 15
 config.line_height = 1.1
-config.font = wezterm.font('JetBrains Mono', { weight = 'Medium' })
+config.font = wezterm.font('JetBrains Mono', { weight = 'DemiBold' })
 config.adjust_window_size_when_changing_font_size = true
 
 -- tab bar
