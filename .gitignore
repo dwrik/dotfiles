@@ -27,5 +27,6 @@
 .config/qBittorrent
 .config/vim/plugged
 .config/vim/autoload
+.config/nvim/autoload
 .config/alacritty/themes
 

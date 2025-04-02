@@ -1,0 +1,12 @@
+{
+    "inlayHint.enable": false,
+    "semanticTokens.enable": true,
+    "floatFactory.floatConfig": {
+        "border": true,
+        "rounded": true
+    },
+    "suggest.floatConfig": {
+        "border": true,
+        "rounded": true
+    }
+}
