@@ -222,7 +222,7 @@ nnoremap <Leader>fl :BLines<CR>|  " Grep lines in current buffer
 let g:coc_global_extensions = ['coc-git', 'coc-vimlsp', 'coc-json', 'coc-sh', 'coc-java', 'coc-pyright']
 " Source coc vim settings if it exists
 if filereadable(expand('$XDG_CONFIG_HOME/nvim/coc-settings.vim'))
-    source $XDG_CONFIG_HOME/vim/coc-settings.vim
+    source $XDG_CONFIG_HOME/nvim/coc-settings.vim
 endif
 
 " Start Obsession (Auto session saving)
