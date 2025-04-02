@@ -10,7 +10,7 @@ export JDK_HOME=$JAVA_HOME
 export PATH="$JAVA_HOME/bin:$PATH"
 
 # default programs
-export VISUAL="vim"
-export EDITOR="vim"
+export VISUAL="nvim"
+export EDITOR="nvim"
 export PAGER="less"
 export TERMINAL="wezterm"

@@ -88,7 +88,7 @@ bindkey "ç" fzf-cd-widget
 # run below command in vim to generate FZF colors from the
 # current vim colorscheme and then add the generated line here
 # :call append('$', printf('export FZF_DEFAULT_OPTS="%s"', matchstr(fzf#wrap().options, "--color[^']*")))
-export FZF_DEFAULT_OPTS="--border=rounded --no-scrollbar --color=bg+:#323232,bg:#2B2B2B,spinner:#CC7832,hl:#808080,fg:#A9B7C6,header:#808080,info:#BBB529,pointer:#CC7832,marker:#CC7832,fg+:#A9B7C6,prompt:#CC7832,hl+:#CC7832"
+export FZF_DEFAULT_OPTS="--border=rounded --no-scrollbar --bind=ctrl-u:preview-half-page-up,ctrl-d:preview-half-page-down --color=16,border:#d8dbe4"
 # command that fzf runs to filter files
 export FZF_DEFAULT_COMMAND="rg --files --hidden --no-ignore -g '!{**/node_modules/**,**/.git/**,**/.DS_Store,**/.zsh_sessions/**,**/.config/alacritty/themes/**,**/.config/coc/**,**/vim/plugged/**,**/venv/**,.cache,.local,.android,.cargo,.m2,.npm,.rustup,.vscode,go,Applications,Library,Public,Postman,Pictures,Music,Movies,Videos,.Trash}'"
 

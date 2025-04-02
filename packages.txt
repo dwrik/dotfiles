@@ -6,11 +6,12 @@ imagemagick
 koekeishiya/formulae/skhd
 maven
 neofetch
+neovim
 node
 powerlevel10k
 ripgrep
 tree
-wezterm
+wezterm@nightly
 yazi
 yt-dlp
 zsh-completions
