@@ -59,6 +59,7 @@ alias notes="vim ~/Notes/"
 alias grep="grep --color=auto"
 alias diff="diff --color=auto"
 alias weather="curl https://wttr.in/"
+alias vim='nvim'
 
 ##############
 # app config #
