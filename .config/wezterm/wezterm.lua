@@ -7,12 +7,14 @@ config.color_scheme = 'NvimDark'
 
 -- font
 config.font_size = 15
-config.line_height = 1.1
+config.line_height = 1.2
 config.font = wezterm.font('JetBrains Mono', { weight = 'DemiBold' })
 config.adjust_window_size_when_changing_font_size = true
 
 -- tab bar
-config.enable_tab_bar = false
+config.enable_tab_bar = true
+config.use_fancy_tab_bar = false
+config.show_new_tab_button_in_tab_bar = false
 
 -- window
 config.window_decorations = 'RESIZE'
@@ -20,7 +22,7 @@ config.window_padding = {
     left   = 26,
     right  = 14,
     top    = 24,
-    bottom = 0,
+    bottom = 10,
 }
 
 -- keybinds
