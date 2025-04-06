@@ -2,10 +2,10 @@
 # be found at https://github.com/koekeishiya/skhd/issues/1
 
 # open terminal
-alt - return : open -na wezterm
+alt - t : wezterm
 
 # fuzzy find and open file using default app
-shift + alt - f : open -na wezterm --args start zsh -i -c 'openw $(fzf)'
+shift + alt - f : wezterm start zsh -i -c 'openw $(fzf)'
 
 # simulate arrow keys using option + hjkl
 alt - h : skhd -k "left"
@@ -16,3 +16,14 @@ alt - l : skhd -k "right"
 # navigate word boundaries using option + np
 alt - p : skhd -k "alt - left"
 alt - n : skhd -k "alt - right"
+
+# window center & fullscreen
+alt - c : skhd -k "fn + ctrl - c"
+alt - f : skhd -k "fn + ctrl - f"
+
+# focus on menu bar
+alt - m : skhd -k "fn + ctrl - f2"
+
+# intellij remaps:
+# cmd + g : open in github
+# cmd + t : open terminal
