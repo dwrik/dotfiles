@@ -3,38 +3,40 @@
 " ========================
 
 " Auto-install plugin manager
-if empty(glob($MYVIMDIR . 'autoload/plug.vim'))
-    silent execute '!curl -fLo '.$MYVIMDIR.'autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+if empty(glob($XDG_CONFIG_HOME . '/nvim/autoload/plug.vim'))
+    silent execute '!curl -fLo '.$XDG_CONFIG_HOME.'/nvim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
     autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 
 call plug#begin()
 
-" Plugins
-Plug 'junegunn/fzf', { 'do': { -> fzf#install() } } " Fuzzy Finder
+" Dependencies
+Plug 'nvim-lua/plenary.nvim'                        " File Tree, Todo
+Plug 'MunifTanjim/nui.nvim'                         " File Tree
+
+" UI Plugins
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } } " Fuzzy Finder FZF
 Plug 'junegunn/fzf.vim'                             " FZF Vim Options
+Plug 'nvim-lualine/lualine.nvim'                    " Status Bar
 Plug 'akinsho/bufferline.nvim'                      " Buffer Bar
-Plug 'itchyny/lightline.vim'                        " Status Bar
 Plug 'nvim-tree/nvim-web-devicons'                  " Glyphs
-Plug 'neoclide/coc.nvim', { 'branch': 'release' }   " LSP
-Plug 'tpope/vim-fugitive'                           " Git
+Plug 'nvim-neo-tree/neo-tree.nvim'                  " File Tree
+Plug 'folke/todo-comments.nvim'                     " Todo Highlights
+Plug 'folke/which-key.nvim'                         " Keybindings Help
+
+" Code Plugins
 Plug 'tpope/vim-commentary'                         " Comments
 Plug 'raimondi/delimitmate'                         " Brackets
-Plug 'tpope/vim-sleuth'                             " Auto Adjust Indent
-Plug 'folke/which-key.nvim'                         " Keybindings
+Plug 'tpope/vim-fugitive'                           " Git
+Plug 'lewis6991/gitsigns.nvim'                      " Git Signs
+Plug 'tpope/vim-sleuth'                             " Auto Indent
 Plug 'lukas-reineke/indent-blankline.nvim'          " Indent Lines
-
-Plug 'nvim-lua/plenary.nvim'                        " Dependency (File Tree, Todo)
-Plug 'MunifTanjim/nui.nvim'                         " Dependency (File Tree)
-Plug 'folke/todo-comments.nvim'                     " Todo Highlights
-Plug 'nvim-neo-tree/neo-tree.nvim'                  " File Tree
 
 call plug#end()
 
 "Plug 'moll/vim-bbye'                               " Persistent Splits
 "Plug 'tpope/vim-obsession'                         " Persistent Sessions
 "Plug 'SirVer/ultisnips'                            " Snippet Manager
-"Plug 'puremourning/vimspector'                     " Debugger
 
 " ========================
 " Colorscheme
@@ -43,7 +45,6 @@ call plug#end()
 " Light: morning, peachpuff
 " Dark: default, base16-ashes, slate, desert, habamax, sorbet
 " Both: wildcharm, retrobox, lunaperche
-" Lightline: PaperColor, Tomorrow_Night_Eighties, deus
 
 set termguicolors
 set background=dark
@@ -153,6 +154,15 @@ nnoremap [t :lua require('todo-comments').jump_prev()<CR>
 " Neo Tree
 nnoremap <C-n> :Neotree toggle<CR>
 
+" Bufferline
+nnoremap gb :BufferLinePick<CR>
+
+" Gitsigns
+nnoremap ]g :Gitsigns next_hunk<CR>
+nnoremap [g :Gitsigns prev_hunk<CR>
+nnoremap gl :Gitsigns blame_line<CR>
+nnoremap gi :Gitsigns preview_hunk<CR>
+
 " ========================
 " Plugin Configurations
 " ========================
@@ -172,22 +182,42 @@ lua << EOF
 require("ibl").setup{}
 EOF
 
-" Lightline
-let g:lightline = {
-    \ 'enable' : {
-    \   'tabline': 0
-    \ },
-    \ 'colorscheme': lightline_colorscheme,
-    \ 'active': {
-    \   'left': [ [ 'mode', 'paste' ],
-    \             [ 'cocstatus', 'readonly', 'filename', 'modified', 'gitbranch' ] ]
-    \ },
-    \ 'component_function': {
-    \   'cocstatus': 'coc#status',
-    \   'gitbranch': 'FugitiveHead'
-    \ },
-    \ }
-autocmd User CocStatusChange,CocDiagnosticChange call lightline#update()
+" Gitsigns
+lua << EOF
+require('gitsigns').setup{
+    signs = {
+        add          = { text = '+' },
+        change       = { text = '~' },
+        delete       = { text = '-' },
+        topdelete    = { text = '-' },
+        changedelete = { text = '_' },
+        untracked    = { text = '?' },
+    },
+    signs_staged = {
+        add          = { text = '+' },
+        change       = { text = '~' },
+        delete       = { text = '-' },
+        topdelete    = { text = '-' },
+        changedelete = { text = '_' },
+        untracked    = { text = '?' },
+    },
+}
+EOF
+
+" Lualine
+lua << EOF
+require('lualine').setup {
+    options = {
+        theme = 'PaperColor',
+        component_separators = { left = '', right = '' },
+        section_separators = { left = '', right = '' },
+        disabled_filetypes = { 'neo-tree', 'gitsigns-blame' },
+    },
+    sections = {
+        lualine_b = {'branch', 'diagnostics'},
+    },
+}
+EOF
 
 " FZF
 let g:fzf_vim = {}
@@ -214,16 +244,6 @@ nnoremap <Leader>ft :GFiles<CR>|  " Search git tracked files
 nnoremap <Leader>fc :GFiles?<CR>| " Search git changed files
 nnoremap <Leader>fg :Rg<CR>|      " Live grep project directory
 nnoremap <Leader>fl :BLines<CR>|  " Grep lines in current buffer
-
-" CoC Settings
-" For adding new lsps:
-"   1 - add in coc_global_extensions list
-"   2 - add filetype in coc-settings.vim @ line 84 (setting up formatexpr)
-let g:coc_global_extensions = ['coc-git', 'coc-vimlsp', 'coc-json', 'coc-sh', 'coc-java', 'coc-pyright']
-" Source coc vim settings if it exists
-if filereadable(expand('$XDG_CONFIG_HOME/nvim/coc-settings.vim'))
-    source $XDG_CONFIG_HOME/nvim/coc-settings.vim
-endif
 
 " Start Obsession (Auto session saving)
 " autocmd VimEnter * Obsession
