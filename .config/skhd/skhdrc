@@ -18,7 +18,7 @@ alt - p : skhd -k "alt - left"
 alt - n : skhd -k "alt - right"
 
 # window center & fullscreen
-alt - c : skhd -k "fn + ctrl - c"
+alt - e : skhd -k "fn + ctrl - c"
 alt - f : skhd -k "fn + ctrl - f"
 
 # focus on menu bar
