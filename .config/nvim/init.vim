@@ -146,6 +146,7 @@ nnoremap N Nzzzv
 nnoremap // :noh<CR>
 nnoremap Q :bdelete! %<CR>
 nnoremap <leader>qq :qa!<CR>
+tnoremap <Esc><Esc> <C-\><C-n>
 
 " Todo Comments
 nnoremap ]t :lua require('todo-comments').jump_next()<CR>
