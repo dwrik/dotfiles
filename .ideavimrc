@@ -1,0 +1,86 @@
+" .ideavimrc is a configuration file for IdeaVim plugin. It uses
+" the same commands as the original .vimrc configuration.
+" You can find a list of commands here: https://jb.gg/h38q75
+" Find more examples here: https://jb.gg/share-ideavimrc
+
+" --- Enable IdeaVim plugins https://jb.gg/ideavim-plugins
+
+Plug 'machakann/vim-highlightedyank' " Highlight copied text
+Plug 'tpope/vim-commentary'          " Comments
+Plug 'preservim/nerdtree'            " File tree
+
+" -- Map IDE actions to IdeaVim -- https://jb.gg/abva4t
+" Map \r to the Reformat Code action
+" map \r <Action>(ReformatCode)
+
+" Map <leader>d to start debug
+" map <leader>d <Action>(Debug)
+
+" Map \b to toggle the breakpoint on the current line
+" map \b <Action>(ToggleLineBreakpoint)
+
+" ========================
+" General Settings
+" ========================
+
+" Behavior
+set clipboard+=unnamed  " Enabling system clipboard
+
+" Scroll
+set scrolloff=8         " Keep cursor 8 lines away from top/bottom
+set sidescrolloff=8     " Keep cursor 8 lines away from left/right
+
+" Search
+set incsearch           " Live highlight matches
+set hlsearch            " Highlight all matches
+set ignorecase          " Case insensitive search
+set smartcase           " Unless uppercase is used
+
+" UI
+set cursorline          " Enable cursor line indicator
+
+" Performance
+set updatetime=250
+set timeoutlen=300
+
+" Splits
+set splitright
+set splitbelow
+
+" ========================
+" Keymaps
+" ========================
+
+" Space as leader
+let mapleader = " "
+
+" Buffer navigation
+nnoremap <S-L> :bnext<CR>
+nnoremap <S-H> :bprev<CR>
+
+" Split navigation
+nnoremap <C-h> <C-w>h
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-l> <C-w>l
+
+" Resize splits
+nnoremap <S-Left>  <C-w><
+nnoremap <S-Down>  <C-w>-
+nnoremap <S-Up>    <C-w>+
+nnoremap <S-Right> <C-w>>
+
+" Reposition cursor
+nnoremap J mzJ`z
+nnoremap <C-d> <C-d>zz
+nnoremap <C-u> <C-u>zz
+nnoremap n nzzzv
+nnoremap N Nzzzv
+
+" Misc
+nnoremap // :noh<CR>
+nnoremap Q :bdelete! %<CR>
+nnoremap <leader>qq :qa!<CR>
+
+" Nerdtree
+nnoremap <C-n> :NERDTreeToggle<CR>
