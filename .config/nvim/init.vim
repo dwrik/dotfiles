@@ -61,7 +61,7 @@ set nocompatible        " Disable Vi-compatible mode
 set hidden              " Enable hidden (bg) buffers
 set mouse=a             " Enable mouse support
 set encoding=utf-8      " Use utf-8 encoding
-set clipboard=unnamed   " Enabling system clipboard
+set clipboard+=unnamed  " Enabling system clipboard
 
 " Line
 set number              " Show line numbers
