@@ -2,24 +2,25 @@
 # be found at https://github.com/koekeishiya/skhd/issues/1
 
 # open terminal
-alt - t : wezterm
+# shift + alt - return : wezterm
 
 # fuzzy find and open file using default app
 shift + alt - f : wezterm start zsh -i -c 'openw $(fzf)'
 
-# simulate arrow keys using option + hjkl
-alt - h : skhd -k "left"
-alt - j : skhd -k "down"
-alt - k : skhd -k "up"
-alt - l : skhd -k "right"
+# simulate arrow keys using caps + hjkl
+# needs caps to be mapped to globe in 'System Settings'
+fn - h : skhd -k "left"
+fn - j : skhd -k "down"
+fn - k : skhd -k "up"
+fn - l : skhd -k "right"
 
 # navigate word boundaries using option + np
-alt - p : skhd -k "alt - left"
-alt - n : skhd -k "alt - right"
+fn - p : skhd -k "alt - left"
+fn - n : skhd -k "alt - right"
 
 # window center & fullscreen
-alt - e : skhd -k "fn + ctrl - c"
-alt - f : skhd -k "fn + ctrl - f"
+# alt - e : skhd -k "fn + ctrl - c"
+# alt - f : skhd -k "fn + ctrl - f"
 
 # focus on menu bar
 alt - m : skhd -k "fn + ctrl - f2"
