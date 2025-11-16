@@ -54,12 +54,14 @@ alias ls="ls --color=auto"
 alias la="ls -a --color=auto"
 alias ll="ls -l --color=auto"
 alias lla="ls -la --color=auto"
-alias nnn='nnn -edioAR'
-alias notes="vim ~/Notes/"
+alias less="less --use-color"
 alias grep="grep --color=auto"
 alias diff="diff --color=auto"
+alias vim="nvim"
+alias vimdiff="nvim -d"
+alias glog="git log --color --oneline | head -n 10"
+alias gcom="git log --oneline --color --max-count=200 | fzf --ansi --no-sort --layout=reverse-list --multi --preview 'git show --color {+1}'"
 alias weather="curl https://wttr.in/"
-alias vim='nvim'
 
 ##############
 # app config #
@@ -91,7 +93,7 @@ bindkey "ç" fzf-cd-widget
 # :call append('$', printf('export FZF_DEFAULT_OPTS="%s"', matchstr(fzf#wrap().options, "--color[^']*")))
 export FZF_DEFAULT_OPTS="--border=rounded --no-scrollbar --bind=ctrl-u:preview-half-page-up,ctrl-d:preview-half-page-down --color=16,border:#d8dbe4"
 # command that fzf runs to filter files
-export FZF_DEFAULT_COMMAND="rg --files --hidden --no-ignore -g '!{**/node_modules/**,**/.git/**,**/.DS_Store,**/.zsh_sessions/**,**/.config/alacritty/themes/**,**/.config/coc/**,**/vim/plugged/**,**/venv/**,.cache,.local,.android,.cargo,.m2,.npm,.rustup,.vscode,go,Applications,Library,Public,Postman,Pictures,Music,Movies,Videos,.Trash}'"
+export FZF_DEFAULT_COMMAND="rg --files --hidden --no-ignore -g '!{**/node_modules/**,**/.git/**,**/.DS_Store,**/.zsh_sessions/**,**/.config/alacritty/themes/**,**/.config/coc/**,**/vim/plugged/**,**/venv/**,**/.yarn/**,**/*.app/**,**/tomcat/**,**/thirdparty/**,.cpan,.nvm,.strap,.sdkman,.groovy,.cache,.local,.android,.cargo,.m2,.npm,.rustup,.vscode,go,Applications,Library,Public,Postman,Pictures,Music,Movies,Videos,.Trash}'"
 
 ############################################
 # syntax highlighting (always keep at end) #
