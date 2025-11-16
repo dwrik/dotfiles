@@ -20,6 +20,10 @@ mod2:
   - option
   - shift
 
+mod4:
+  - option
+  - control
+
 #############
 # conflicts #
 #############
@@ -40,12 +44,12 @@ focus-screen-1:
 # throw left
 swap-screen-ccw:
   mod: mod3
-  key: h
+  key: k
 
 # throw right
 swap-screen-cw:
   mod: mod3
-  key: l
+  key: j
 
 ######################
 # layouts & bindings #
@@ -88,6 +92,14 @@ focus-ccw:
 
 focus-cw:
   mod: mod1
+  key: j
+
+focus-screen-ccw:
+  mod: mod4
+  key: k
+
+focus-screen-cw:
+  mod: mod4
   key: j
 
 ##############################
@@ -143,7 +155,7 @@ relaunch-amethyst:
 #################
 
 window-margins: true
-window-margin-size: 10
+window-margin-size: 35
 new-windows-to-main: true
 
 screen-padding-top: 0
