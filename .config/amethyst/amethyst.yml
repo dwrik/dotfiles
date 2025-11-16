@@ -146,10 +146,10 @@ window-margins: true
 window-margin-size: 10
 new-windows-to-main: true
 
-screen-padding-top: 5
-screen-padding-left: 5
-screen-padding-right: 5
-screen-padding-bottom: 5
+screen-padding-top: 0
+screen-padding-left: 0
+screen-padding-right: 0
+screen-padding-bottom: 0
 
 enables-layout-hud: true
 enables-layout-hud-on-space-change: false
@@ -157,6 +157,6 @@ enables-layout-hud-on-space-change: false
 focus-follows-mouse: false
 follow-space-thrown-windows: true
 
-float-small-windows: false
+float-small-windows: true
 floating: []
 
