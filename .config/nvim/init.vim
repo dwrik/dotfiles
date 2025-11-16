@@ -3,7 +3,7 @@
 " ========================
 
 " Auto-install plugin manager
-if empty(glob($XDG_CONFIG_HOME . '/nvim/autoload/plug.vim'))
+if empty(glob('~/.config/nvim/autoload/plug.vim'))
     silent execute '!curl -fLo '.$XDG_CONFIG_HOME.'/nvim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
     autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
@@ -31,6 +31,10 @@ Plug 'tpope/vim-fugitive'                           " Git
 Plug 'lewis6991/gitsigns.nvim'                      " Git Signs
 Plug 'tpope/vim-sleuth'                             " Auto Indent
 Plug 'lukas-reineke/indent-blankline.nvim'          " Indent Lines
+
+" Markdown Plugins
+Plug 'nvim-treesitter/nvim-treesitter'
+Plug 'MeanderingProgrammer/render-markdown.nvim'
 
 call plug#end()
 
@@ -146,7 +150,6 @@ nnoremap N Nzzzv
 nnoremap // :noh<CR>
 nnoremap Q :bdelete! %<CR>
 nnoremap <leader>qq :qa!<CR>
-tnoremap <Esc><Esc> <C-\><C-n>
 
 " Todo Comments
 nnoremap ]t :lua require('todo-comments').jump_next()<CR>
@@ -167,6 +170,23 @@ nnoremap gi :Gitsigns preview_hunk<CR>
 " ========================
 " Plugin Configurations
 " ========================
+
+" Markdown
+lua << EOF
+require('render-markdown').setup({
+    heading = { border = true },
+    indent = {
+        enabled = false,
+        render_modes = false,
+        per_level = 2,
+        skip_level = 1,
+        skip_heading = false,
+        icon = '▎',
+        priority = 0,
+        highlight = 'RenderMarkdownIndent',
+    },
+})
+EOF
 
 " Todo Comments
 lua << EOF
