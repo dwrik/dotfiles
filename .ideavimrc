@@ -55,8 +55,8 @@ set splitbelow
 let mapleader = " "
 
 " Buffer navigation
-nnoremap <S-L> :bnext<CR>
-nnoremap <S-H> :bprev<CR>
+nnoremap <S-L> :tabnext<CR>
+nnoremap <S-H> :tabprev<CR>
 
 " Split navigation
 nnoremap <C-h> <C-w>h
