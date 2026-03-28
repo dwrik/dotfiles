@@ -6,6 +6,7 @@ export HISTFILE="$XDG_DATA_HOME/.zsh_history"
 export HISTSIZE=5000
 export SAVEHIST=5000
 
+setopt histignorespace   # ignore commands with preceding space
 setopt appendhistory     # append to history file
 setopt sharehistory      # import history from other sessions
 setopt histignorealldups # remove duplicate entries from history
@@ -79,6 +80,7 @@ function y() {
 
 # add user scripts to path
 export PATH="$HOME/.local/bin:$PATH"
+export PATH="$HOME/.local/maelstrom:$PATH"
 
 # fzf shell integration options
 export FZF_CTRL_T_COMMAND=
@@ -108,3 +110,6 @@ source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 # to customize run `p10k configure` or edit ~/.p10k.zsh
 source /opt/homebrew/share/powerlevel10k/powerlevel10k.zsh-theme
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+# this must be at the end of the file for sdkman to work
+[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
