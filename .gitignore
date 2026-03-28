@@ -30,4 +30,5 @@
 .config/vim/autoload
 .config/nvim/autoload
 .config/alacritty/themes
+.config/yazi/plugins
 
