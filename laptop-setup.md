@@ -61,11 +61,12 @@ defaults write com.jetbrains.intellij ApplePressAndHoldEnabled -bool false
 ## packages
 
 ```bash
-brew install amethyst aria2 bat bitwarden discord fzf koekeishiya/formulae/skhd logi-options+ monitorcontrol neofetch neovim powerlevel10k ripgrep spotify tree vlc wezterm@nightly yazi zsh-completions zsh-syntax-highlighting
+brew install iterm2 amethyst aria2 bat fzf koekeishiya/formulae/skhd logi-options+ monitorcontrol neofetch neovim powerlevel10k ripgrep spotify tree vlc wezterm@nightly yazi zsh-completions zsh-syntax-highlighting sdkman
 ```
 
-- [ ] grant full disk access to wezterm
 - [ ] skhd --start-service
+- [ ] grant full disk access to iterm2
+- [ ] install java using sdkman
 
 ## mouse
 
